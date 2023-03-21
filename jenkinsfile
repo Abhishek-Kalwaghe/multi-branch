@@ -21,18 +21,5 @@ pipeline
                 sh 'scp /var/lib/jenkins/workspace/declarative_pipeline_1/webapp/target/webapp.war ubuntu@172.31.12.86:/var/lib/tomcat9/webapps/testapp_5.war'
             }
         }
-        stage('continuous-testing')
-        {
-            steps{
-                git 'https://github.com/Abhishek-Kalwaghe/FunctionalTesting.git'
-                sh 'java -jar /var/lib/jenkins/workspace/declarative_pipeline_1/testing.jar'
-            }
-        }
-        stage('continuous-delivery')
-        {
-            steps{
-                sh 'scp /var/lib/jenkins/workspace/declarative_pipeline_1/webapp/target/webapp.war ubuntu@172.31.0.224:/var/lib/tomcat9/webapps/testapp_5.war'
-            }
-        }
     }
 }
